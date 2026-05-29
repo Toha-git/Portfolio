@@ -1,14 +1,15 @@
 import { Card } from "@/components/ui/card";
+import { Braces, Flame, GitBranch, Sparkles } from "lucide-react";
 import javaIcon from "@/assets/java-icon.png";
 import cppIcon from "@/assets/cpp-icon.png";
-import dataStructuresIcon from "@/assets/data-structures-icon.png";
-import databaseIcon from "@/assets/database-icon.png";
 
 const skills = [
-  { name: "Java", level: 100, image: javaIcon },
-  { name: "C++", level: 90, image: cppIcon },
-  { name: "Data Structures", level: 90, image: dataStructuresIcon },
-  { name: "Database", level: 80, image: databaseIcon },
+  { name: "Java", image: javaIcon },
+  { name: "C++", image: cppIcon },
+  { name: "C#", icon: Braces },
+  { name: "Git", icon: GitBranch },
+  { name: "Firebase", icon: Flame },
+  { name: "Vibe Coding", icon: Sparkles },
 ];
 
 const Skills = () => {
@@ -17,11 +18,13 @@ const Skills = () => {
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-4xl font-bold text-center mb-4 text-primary">Technical Skills</h2>
         <p className="text-center text-muted-foreground mb-12">
-          My areas of expertise and proficiency levels
+          My areas of expertise and hands-on practice
         </p>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {skills.map((skill, index) => {
+            const IconComponent = skill.icon;
+
             return (
               <Card
                 key={skill.name}
@@ -29,10 +32,13 @@ const Skills = () => {
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="bg-background p-6 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
-                  <img src={skill.image} alt={skill.name} className="w-16 h-16 object-contain" />
+                  {skill.image ? (
+                    <img src={skill.image} alt={skill.name} className="w-16 h-16 object-contain" />
+                  ) : IconComponent ? (
+                    <IconComponent className="w-16 h-16 text-primary" aria-hidden="true" />
+                  ) : null}
                 </div>
-                <h3 className="font-semibold text-lg mb-2">{skill.name}</h3>
-                <span className="text-sm text-muted-foreground font-medium">{skill.level}%</span>
+                <h3 className="font-semibold text-lg">{skill.name}</h3>
               </Card>
             );
           })}

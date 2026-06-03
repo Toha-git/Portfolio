@@ -1,8 +1,10 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { BookOpen, ExternalLink } from "lucide-react";
+import { BookOpen, Bus, ExternalLink } from "lucide-react";
 import bookshopInventory from "@/assets/bookshop-inventory.png";
+
+const dhakaFareUrl = "https://52zmhfsz.insforge.site/";
 
 const Projects = () => {
   return (
@@ -13,7 +15,7 @@ const Projects = () => {
           Showcasing my development experience and problem-solving skills
         </p>
 
-        <div className="grid md:grid-cols-1 gap-8 max-w-3xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow animate-fade-in">
             <div className="bg-primary p-8 text-primary-foreground">
               <div className="flex items-center gap-4 mb-4">
@@ -80,7 +82,58 @@ const Projects = () => {
             </div>
           </Card>
 
-          <Card className="p-8 text-center bg-muted/50 border-dashed">
+          <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow animate-fade-in">
+            <div className="bg-primary p-8 text-primary-foreground">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-white/20 p-4 rounded-lg">
+                  <Bus className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold">DhakaFare</h3>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {["React", "Insforge", "Authentication", "Database"].map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 bg-white/20 rounded-full text-sm font-medium"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="p-8">
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                A community-powered Dhaka bus fare app where commuters can search route fares,
+                browse recently added trips, and contribute real BDT fare information for others.
+              </p>
+              <div className="space-y-3 mb-6">
+                <div className="flex items-start gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <p className="text-sm">Search fares by origin and destination</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <p className="text-sm">Community fare submissions with route details</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <p className="text-sm">Voting and sign-in features for trusted contributions</p>
+                </div>
+                <div className="flex items-start gap-2">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2"></div>
+                  <p className="text-sm">Embedded route maps for quick travel context</p>
+                </div>
+              </div>
+              <Button variant="outline" className="w-full sm:w-auto" asChild>
+                <a href={dhakaFareUrl} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Visit Project
+                </a>
+              </Button>
+            </div>
+          </Card>
+
+          <Card className="p-8 text-center bg-muted/50 border-dashed md:col-span-2">
             <p className="text-muted-foreground mb-2">More projects coming soon...</p>
             <p className="text-sm text-muted-foreground">
               Currently working on expanding my portfolio with new innovative solutions
